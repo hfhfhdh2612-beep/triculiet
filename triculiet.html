@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tuất Trí Culiet</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+    font-family: 'Arial Black', sans-serif;
+    overflow: hidden;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .text {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00ff88, #00bfff, #8a2be2, #ff0080);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow 5s linear infinite, glow 2s ease-in-out infinite alternate;
+    text-transform: uppercase;
+  }
+
+  @keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+  }
+
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 5px #ff0080) drop-shadow(0 0 10px #ff0080); }
+    to   { filter: drop-shadow(0 0 20px #00bfff) drop-shadow(0 0 40px #00bfff); }
+  }
+
+  .sub {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #aaa;
+    letter-spacing: 8px;
+    animation: fadeIn 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0.3; }
+    to   { opacity: 1; }
+  }
+
+  /* Hiệu ứng từng chữ cái nhấp nhô */
+  .text span {
+    display: inline-block;
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  .text span:nth-child(odd) { animation-delay: 0.1s; }
+  .text span:nth-child(even) { animation-delay: 0.3s; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text" id="mainText"></h1>
+    <p class="sub">✦ CHÚC MỪNG ✦</p>
+  </div>
+
+  <script>
+    const text = "TUẤT TRÍ CULIET";
+    const el = document.getElementById("mainText");
+    el.innerHTML = text.split("").map(ch => 
+      ch === " " ? "&nbsp;" : `<span>${ch}</span>`
+    ).join("");
+  </script>
+</body>
+</html>
